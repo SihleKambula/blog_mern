@@ -1,0 +1,27 @@
+POST http://localhost:3030/blogs
+content-type : application/json
+
+{
+    "title":"Blog 2",
+    "body":"What about your life"
+}
+
+###
+
+GET http://localhost:3030/blogs
+
+###
+
+GET http://localhost:3030/blogs/5f1c73d848239325a424f728
+
+###
+
+PATCH http://localhost:3030/blogs/5f1c73d848239325a424f728
+content-Type: application/json
+
+{
+    "title":"Entanglement"
+}
+
+###
+DELETE http://localhost:3030/blogs/<id>
