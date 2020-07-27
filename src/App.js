@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Container } from "react-bootstrap";
+import { BrowserRouter, Route } from "react-router-dom";
+
+import NavbarCon from "./components/Navbar";
+import Blogs from "./components/Blogs";
+import CreateBlog from "./components/CreateBlog";
+import Blog from "./components/Blog";
+import BlogContextProvider from "./context/BlogContext";
+import "./index.css";
 
 function App() {
+  // JSX
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Container fluid className="px-0">
+        <header className="bg-primary">
+          <NavbarCon />
+        </header>
+        <Container>
+          <BlogContextProvider>
+            <Route exact path="/" component={Blogs} />
+            <Route path="/createblog" component={CreateBlog} />
+            <Route path="/blog/:id" component={Blog} />
+          </BlogContextProvider>
+        </Container>
+      </Container>
+    </BrowserRouter>
   );
 }
 
